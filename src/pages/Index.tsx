@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Heart } from "lucide-react";
+import { Heart, Star, Eye, Clock } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import CTAButton from "@/components/CTAButton";
 import GlassCard from "@/components/GlassCard";
