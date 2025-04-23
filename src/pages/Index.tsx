@@ -1,5 +1,6 @@
+
 import React from "react";
-import { Heart, Star, Eye, Clock, Image } from "lucide-react";
+import { Heart, Star, Eye, Clock } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import CTAButton from "@/components/CTAButton";
 import GlassCard from "@/components/GlassCard";
@@ -36,79 +37,86 @@ const Index = () => {
     },
   ];
 
-  // Get user's current date for offer
+  // Data da oferta
   const today = new Date();
   const dataOferta = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth()+1).toString().padStart(2, '0')}/${today.getFullYear()}`;
 
   return (
     <div className="min-h-screen bg-white">
-      {/* 1. HERO SECTION */}
-      <AnimatedSection className="relative pt-16 px-5 md:px-10 lg:px-20 text-center pb-16 bg-black">
-        {/* Fundo decorativo com imagem transparente */}
+      {/* HERO SECTION */}
+      <section className="relative pt-16 pb-20 px-5 md:px-9 min-h-[90vh] flex flex-col justify-center items-center bg-black overflow-hidden">
+        {/* Imagem decorativa de fundo com overlay escura */}
         <img
-          src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=60"
+          src="/lovable-uploads/6f2daa40-e885-4661-a5c3-ca0df16d49bd.png"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none"
-          style={{ zIndex: 1 }}
+          className="absolute inset-0 w-full h-full object-cover opacity-15 pointer-events-none select-none z-0"
+          style={{
+            filter: "blur(1.5px)",
+            mixBlendMode: "screen"
+          }}
         />
-        <div className="relative max-w-4xl mx-auto z-10">
+        {/* Gradiente overlay para dar um clima mais parecido com o exemplo */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/60 to-purple-900/20 z-0"></div>
+        <div className="relative z-10 max-w-3xl w-full mx-auto flex flex-col items-center">
           <div className="flex justify-center items-center mb-4 gap-3">
             <h2 className="font-playfair font-bold text-xl md:text-2xl text-white">Eleve™: Despertar do Peitoral</h2>
             <Heart className="ml-2 text-eleveCoral h-6 w-6" />
           </div>
-          <div className="flex justify-center">
-            <span
-              className="inline-block font-playfair font-bold uppercase text-2xl md:text-4xl lg:text-5xl tracking-wide mb-6 text-white border-2 border-red-500 px-3 py-1 rounded-[12px]"
-              style={{ borderColor: "red" }}
-            >
-              RECUPERE A FIRMEZA NATURAL
-            </span>
-          </div>
-          <h1 className="font-playfair font-bold text-xl md:text-3xl lg:text-4xl tracking-wide mt-4 mb-6 text-white">
+          <span
+            className="inline-block text-white font-playfair font-bold uppercase text-2xl md:text-4xl lg:text-5xl tracking-wide mb-7 px-3 py-1 rounded-lg border-4 border-red-500 shadow-xl bg-black/50"
+            style={{ borderColor: "red" }}
+          >
+            RECUPERE A FIRMEZA NATURAL
+          </span>
+          <h1 className="font-playfair font-bold text-xl md:text-3xl lg:text-4xl tracking-wide text-white mb-7 text-center">
             SUA POSTURA E SUA CONFIANÇA — EM APENAS 21 DIAS
           </h1>
-          <p className="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
-            Um método feminino e leve, que valoriza o seu alto — sem academia, sem cirurgias, sem loucuras.
+          <p className="text-lg md:text-xl text-gray-100 mb-7 max-w-2xl mx-auto">
+            Um método feminino, leve, que valoriza o seu alto — sem academia, sem cirurgias, sem loucuras.
           </p>
-          <div className="my-8">
+          <div className="my-6 w-full flex flex-col items-center">
             <img 
               src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
               alt="Mulher com postura elegante e confiante" 
-              className="rounded-xl shadow-lg max-w-full h-auto mx-auto max-h-[400px] object-cover border-4 border-eleveRosa"
+              className="rounded-xl shadow-lg max-w-xs sm:max-w-md h-auto mx-auto max-h-[380px] object-cover border-4 border-eleveRosa"
             />
           </div>
-          <div className="mt-8">
+          <div className="mt-6 mb-1 w-full max-w-xs mx-auto flex justify-center">
             <CTAButton 
               size="lg"
               variant="outline"
-              className="bg-emerald-500 hover:bg-emerald-600 text-white border-none font-semibold text-lg px-10 shadow-lg"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white border-none font-semibold text-lg px-10 py-3 shadow-lg rounded-full transition-all"
               onClick={() => scrollToSection("pricing")}
             >
               quero começar minha transformação agora!
             </CTAButton>
           </div>
-          <div className="mt-4 flex flex-col items-center gap-1">
-            <span className="text-white text-base md:text-lg">De <span className="text-red-500 font-bold line-through">R$ 97,00</span> por</span>
-            <span className="text-2xl md:text-3xl font-bold text-emerald-400">APENAS R$ 10</span>
+          <div className="mt-2 flex flex-col items-center gap-1">
+            <span className="text-white text-base md:text-lg">
+              De <span className="text-red-500 font-bold line-through">R$ 97,00</span> por
+            </span>
+            <span className="text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">
+              APENAS R$ 10
+            </span>
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      {/* 2. BLOCO DE IDENTIFICAÇÃO */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveNude">
+      {/* BLOCO IDENTIFICAÇÃO - Fundo lavanda claro */}
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveLavanda/90">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-6 text-gray-800">
-            Já deixou de ir à praia, piscina ou usar decotes porque sentiu vergonha do seu alto?
+            Sabe quando evita abraços apertados ou usar uma blusa mais soltinha porque sente que seu seio não está mais no lugar? 
           </h2>
           <p className="text-lg text-gray-700 md:text-xl leading-relaxed">
-            Sentir o peito mais flácido faz você duvidar da própria beleza? Se parece com você, saiba: é mais comum do que imagina. O desconforto com seios caídos afeta autoestima, autoconfiança e até relacionamentos. Mas recuperar sua segurança é totalmente possível — sem julgamento, só com carinho!
+            O desconforto de vestir um sutiã e ver o alto não preencher mais como antes, de não se sentir “segura” nas fotos ou encontros, faz parte da rotina de muitas mulheres — e não tem nada a ver com vaidade. É sobre identificação. E é possível mudar isso com respeito ao seu corpo!
           </p>
         </div>
       </AnimatedSection>
 
-      {/* 3. BLOCO DE DESEJO */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 gradient-lavender">
+      {/* BLOCO DE DESEJO - Nude suave */}
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveNude">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-8 text-gray-800">
             Imagine se olhar no espelho e se sentir firme, elegante e segura — sem esconder sua parte de cima.
@@ -134,7 +142,7 @@ const Index = () => {
           <CTAButton 
             size="md"
             variant="outline"
-            className="bg-eleveNude text-gray-700 border border-gray-300 hover:bg-eleveLavanda"
+            className="bg-eleveNude text-gray-700 border border-gray-300 hover:bg-eleveLavanda rounded-full px-7"
             onClick={() => scrollToSection("pricing")}
           >
             Quero começar agora
@@ -142,7 +150,7 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* 4. BLOCO DE OBJEÇÕES */}
+      {/* BLOCO OBJEÇÕES - Fundo branco */}
       <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-8 text-center text-gray-800">
@@ -165,8 +173,8 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* 5. O MÉTODO E SUA CRIADORA */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveLavanda/40">
+      {/* MÉTODO E CRIADORA - Fundo rosa claro */}
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveRosa/50">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-8 text-center text-gray-800">
             Um método pensado para valorizar o que você já tem.
@@ -206,12 +214,12 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            {/* Só premium ganha bônus! */}
+            {/* Bônus apenas para Premium! */}
             <div className="space-y-4">
               <h3 className="font-playfair font-bold text-xl mb-4">
                 Bônus especiais <span className="text-eleveCoral font-semibold">(exclusivos no plano Premium)</span>:
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-3 opacity-80">
                 <div className="flex items-start">
                   <div className="h-6 w-6 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0">🎁</div>
                   <p>Diário da Autoimagem</p>
@@ -238,14 +246,14 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* 6. PLANOS DE ACESSO */}
+      {/* PLANOS DE ACESSO */}
       <AnimatedSection id="pricing" className="py-16 px-5 md:px-10 lg:px-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-12 text-center text-gray-800">
             Comece no seu ritmo:
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 relative">
-            {/* Card Essencial */}
+            {/* Card Essencial - simples */}
             <div className="relative">
               <GlassCard className="bg-gray-100 border border-gray-300 shadow-sm">
                 <div className="text-center mb-6">
@@ -269,13 +277,13 @@ const Index = () => {
                 <CTAButton
                   fullWidth
                   variant="outline"
-                  className="bg-gray-200 text-gray-600 border-gray-400 hover:bg-gray-300 font-medium"
+                  className="bg-gray-200 text-gray-600 border-gray-400 hover:bg-gray-300 font-medium rounded-lg"
                 >
                   Quero Começar Agora
                 </CTAButton>
               </GlassCard>
             </div>
-            {/* Card Premium */}
+            {/* Card Premium - destacado */}
             <div className="relative">
               <BadgeRibbon>Mais vendido</BadgeRibbon>
               <GlassCard className="border-2 border-eleveCoral bg-gradient-to-tr from-eleveRosa via-eleveLavanda to-white animate-fade-in shadow-lg">
@@ -313,7 +321,7 @@ const Index = () => {
                 <CTAButton
                   fullWidth
                   size="lg"
-                  className="bg-eleveCoral hover:bg-eleveCoral/90 text-white font-bold shadow-lg text-lg border-none"
+                  className="bg-eleveCoral hover:bg-eleveCoral/90 text-white font-bold shadow-lg text-lg border-none rounded-lg"
                 >
                   Quero a Experiência Completa
                 </CTAButton>
@@ -323,8 +331,8 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* 7. PROVAS SOCIAIS */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveRosa/30">
+      {/* PROVAS SOCIAIS - lavanda */}
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveLavanda/50">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-10 text-center text-gray-800">
             Mulheres reais, resultados reais:
@@ -335,7 +343,6 @@ const Index = () => {
               text="Comecei o método há 3 semanas e já estou usando roupas que ficavam no fundo do armário. A melhor parte é que posso fazer tudo em casa, sem precisar de equipamentos!"
               className="p-6"
               rating={5}
-              // Imagem real circular
               avatarUrl="https://randomuser.me/api/portraits/women/44.jpg"
             />
             <TestimonialCard
@@ -359,7 +366,7 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* 8. TRANSFORMAÇÃO FINAL */}
+      {/* TRANSFORMAÇÃO FINAL - Nude */}
       <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveNude">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-8 text-gray-800">
@@ -381,11 +388,15 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* 9. GARANTIA + CTA FINAL */}
+      {/* GARANTIA + CTA FINAL - branco */}
       <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <div className="border-2 border-eleveCoral rounded-xl p-6 mb-10 max-w-xl mx-auto">
-            <Image className="h-12 w-12 mx-auto mb-4 text-eleveCoral" />
+            {/* Substituí o icone para não usar o lucide-react proibido */}
+            <svg className="h-12 w-12 mx-auto mb-4 text-eleveCoral" fill="none" viewBox="0 0 48 48" stroke="currentColor">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="3" fill="#fbd6e3"/>
+              <path d="M18 26l6 6 10-12" stroke="#ff6f61" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
             <h3 className="font-playfair font-bold text-xl mb-4">
               Satisfação ou dinheiro de volta em até 7 dias. Sem perguntas.
             </h3>
@@ -406,7 +417,7 @@ const Index = () => {
         </div>
       </AnimatedSection>
 
-      {/* 10. FAQ */}
+      {/* FAQ FINAL - Lavanda */}
       <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveLavanda/30">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl mb-8 text-center text-gray-800">
