@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Heart, Star, Eye, Clock } from "lucide-react";
+import { Heart } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import CTAButton from "@/components/CTAButton";
 import GlassCard from "@/components/GlassCard";
@@ -45,7 +45,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       {/* HERO SECTION */}
       <section className="relative pt-16 pb-20 px-5 md:px-9 min-h-[90vh] flex flex-col justify-center items-center bg-black overflow-hidden">
-        {/* Imagem decorativa de fundo com overlay escura */}
+        {/* Imagem decorativa de fundo, bem leve */}
         <img
           src="/lovable-uploads/6f2daa40-e885-4661-a5c3-ca0df16d49bd.png"
           alt=""
@@ -56,49 +56,62 @@ const Index = () => {
             mixBlendMode: "screen"
           }}
         />
-        {/* Gradiente overlay para dar um clima mais parecido com o exemplo */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/60 to-purple-900/20 z-0"></div>
+        {/* Gradiente overlay para clima mais feminino */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/60 to-purple-900/10 z-0"></div>
         <div className="relative z-10 max-w-3xl w-full mx-auto flex flex-col items-center">
+          {/* Título produto + coração */}
           <div className="flex justify-center items-center mb-4 gap-3">
-            <h2 className="font-playfair font-bold text-xl md:text-2xl text-white">Eleve™: Despertar do Peitoral</h2>
-            <Heart className="ml-2 text-eleveCoral h-6 w-6" />
+            <h2 className="font-playfair font-bold text-xl md:text-2xl" style={{color: "#fbd6e3"}}>
+              Eleve
+              <span className="mx-1" style={{color: "#e9d8fd"}}>™: Despertar do Peitoral</span>
+            </h2>
+            <Heart className="ml-2" style={{color:"#ff6f61"}} />
           </div>
-          <span
-            className="inline-block text-white font-playfair font-bold uppercase text-2xl md:text-4xl lg:text-5xl tracking-wide mb-7 px-3 py-1 rounded-lg border-4 border-red-500 shadow-xl bg-black/50"
-            style={{ borderColor: "red" }}
-          >
-            RECUPERE A FIRMEZA NATURAL
-          </span>
-          <h1 className="font-playfair font-bold text-xl md:text-3xl lg:text-4xl tracking-wide text-white mb-7 text-center">
-            SUA POSTURA E SUA CONFIANÇA — EM APENAS 21 DIAS
+
+          {/* HEADLINE: destaque com cor lavanda apenas na frase */}
+          <h1 className="font-playfair font-bold text-2xl md:text-4xl lg:text-5xl tracking-wide text-white mb-5 text-center leading-tight">
+            <span className="block">
+              <span className="text-eleveLavanda" style={{ color: "#e9d8fd" }}>RECUPERE A FIRMEZA NATURAL</span>
+            </span>
+            <span className="block mt-1">SUA POSTURA E SUA CONFIANÇA — EM APENAS 21 DIAS</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-100 mb-7 max-w-2xl mx-auto">
+
+          <p className="text-lg md:text-xl text-gray-100 mb-7 max-w-2xl mx-auto font-poppins">
             Um método feminino, leve, que valoriza o seu alto — sem academia, sem cirurgias, sem loucuras.
           </p>
+
+          {/* BOTÃO - gradiente roxo/rosa */}
           <div className="my-6 w-full flex flex-col items-center">
-            <img 
-              src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-              alt="Mulher com postura elegante e confiante" 
-              className="rounded-xl shadow-lg max-w-xs sm:max-w-md h-auto mx-auto max-h-[380px] object-cover border-4 border-eleveRosa"
-            />
-          </div>
-          <div className="mt-6 mb-1 w-full max-w-xs mx-auto flex justify-center">
-            <CTAButton 
+            <CTAButton
               size="lg"
-              variant="outline"
-              className="bg-emerald-500 hover:bg-emerald-600 text-white border-none font-semibold text-lg px-10 py-3 shadow-lg rounded-full transition-all"
+              variant="primary"
+              className="bg-gradient-to-r from-[#ae85ff] via-[#c198fd] to-[#ff6f61] hover:from-[#b9a1ff] hover:to-[#fb6aa8] text-white border-none font-semibold text-lg px-10 py-3 shadow-lg rounded-full transition-all"
               onClick={() => scrollToSection("pricing")}
             >
               quero começar minha transformação agora!
             </CTAButton>
           </div>
+
+          {/* Oferta de urgência estilizada */}
           <div className="mt-2 flex flex-col items-center gap-1">
             <span className="text-white text-base md:text-lg">
-              De <span className="text-red-500 font-bold line-through">R$ 97,00</span> por
+              De{" "}
+              <span className="text-red-500 font-bold line-through text-lg md:text-xl">R$ 97,00</span>
+              {" "}por
             </span>
-            <span className="text-3xl md:text-4xl font-bold text-emerald-400 drop-shadow-lg">
+            <span className="text-3xl md:text-4xl font-bold" style={{ color: "#15da88", textShadow: "0 1px 8px #0d7037a1" }}>
               APENAS R$ 10
             </span>
+          </div>
+
+          {/* Selos/Segurança */}
+          <div className="mt-6 flex justify-center">
+            <img
+              src="/lovable-uploads/22144477-c6e1-4e97-9eb7-5b5c25dc2015.png"
+              alt="Compra Segura, Satisfação Garantida, Privacidade Protegida"
+              className="max-h-12 w-auto"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
@@ -457,3 +470,4 @@ const Index = () => {
 };
 
 export default Index;
+
