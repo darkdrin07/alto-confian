@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Heart, Star, Eye, Clock, Image } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -6,15 +5,14 @@ import CTAButton from "@/components/CTAButton";
 import GlassCard from "@/components/GlassCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import FAQAccordion from "@/components/FAQAccordion";
+import BadgeRibbon from "@/components/BadgeRibbon";
 
 const Index = () => {
-  // Scroll to section function
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     section?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // FAQ items
   const faqItems = [
     {
       question: "Como vou receber o produto?",
@@ -38,49 +36,61 @@ const Index = () => {
     },
   ];
 
+  // Get user's current date for offer
+  const today = new Date();
+  const dataOferta = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth()+1).toString().padStart(2, '0')}/${today.getFullYear()}`;
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Floating CTA Button */}
-      <div className="float-cta">
-        <CTAButton 
-          size="md"
-          onClick={() => scrollToSection("pricing")}
-        >
-          Quero Começar Minha Transformação – A partir de R$9,90
-        </CTAButton>
-      </div>
-
       {/* 1. HERO SECTION */}
-      <AnimatedSection className="pt-16 px-5 md:px-10 lg:px-20 text-center pb-16 bg-gradient-to-b from-white to-eleveRosa/20">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex justify-center items-center mb-4">
-            <h2 className="font-playfair font-bold text-xl md:text-2xl text-gray-800">Eleve™: Despertar do Peitoral</h2>
+      <AnimatedSection className="relative pt-16 px-5 md:px-10 lg:px-20 text-center pb-16 bg-black">
+        {/* Fundo decorativo com imagem transparente */}
+        <img
+          src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=60"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none"
+          style={{ zIndex: 1 }}
+        />
+        <div className="relative max-w-4xl mx-auto z-10">
+          <div className="flex justify-center items-center mb-4 gap-3">
+            <h2 className="font-playfair font-bold text-xl md:text-2xl text-white">Eleve™: Despertar do Peitoral</h2>
             <Heart className="ml-2 text-eleveCoral h-6 w-6" />
           </div>
-          
-          <h1 className="font-playfair font-bold text-2xl md:text-4xl lg:text-5xl tracking-wide mb-6 text-gray-800">
-            RECUPERE A FIRMEZA NATURAL, SUA POSTURA E SUA CONFIANÇA — EM APENAS 21 DIAS
+          <div className="flex justify-center">
+            <span
+              className="inline-block font-playfair font-bold uppercase text-2xl md:text-4xl lg:text-5xl tracking-wide mb-6 text-white border-2 border-red-500 px-3 py-1 rounded-[12px]"
+              style={{ borderColor: "red" }}
+            >
+              RECUPERE A FIRMEZA NATURAL
+            </span>
+          </div>
+          <h1 className="font-playfair font-bold text-xl md:text-3xl lg:text-4xl tracking-wide mt-4 mb-6 text-white">
+            SUA POSTURA E SUA CONFIANÇA — EM APENAS 21 DIAS
           </h1>
-          
-          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-100 mb-8 max-w-3xl mx-auto">
             Um método feminino e leve, que valoriza o seu alto — sem academia, sem cirurgias, sem loucuras.
           </p>
-          
           <div className="my-8">
             <img 
               src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
               alt="Mulher com postura elegante e confiante" 
-              className="rounded-xl shadow-lg max-w-full h-auto mx-auto max-h-[500px] object-cover"
+              className="rounded-xl shadow-lg max-w-full h-auto mx-auto max-h-[400px] object-cover border-4 border-eleveRosa"
             />
           </div>
-          
           <div className="mt-8">
             <CTAButton 
-              size="lg" 
+              size="lg"
+              variant="outline"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white border-none font-semibold text-lg px-10 shadow-lg"
               onClick={() => scrollToSection("pricing")}
             >
-              Quero Começar Minha Transformação – A partir de R$9,90
+              quero começar minha transformação agora!
             </CTAButton>
+          </div>
+          <div className="mt-4 flex flex-col items-center gap-1">
+            <span className="text-white text-base md:text-lg">De <span className="text-red-500 font-bold line-through">R$ 97,00</span> por</span>
+            <span className="text-2xl md:text-3xl font-bold text-emerald-400">APENAS R$ 10</span>
           </div>
         </div>
       </AnimatedSection>
@@ -89,21 +99,20 @@ const Index = () => {
       <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveNude">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-6 text-gray-800">
-            Você evita certas roupas por não se sentir bem com o seu alto?
+            Já deixou de ir à praia, piscina ou usar decotes porque sentiu vergonha do seu alto?
           </h2>
           <p className="text-lg text-gray-700 md:text-xl leading-relaxed">
-            Às vezes você olha no espelho e tenta disfarçar. No fundo, sente que perdeu algo… sua essência, sua segurança. Isso não é vaidade. É identidade.
+            Sentir o peito mais flácido faz você duvidar da própria beleza? Se parece com você, saiba: é mais comum do que imagina. O desconforto com seios caídos afeta autoestima, autoconfiança e até relacionamentos. Mas recuperar sua segurança é totalmente possível — sem julgamento, só com carinho!
           </p>
         </div>
       </AnimatedSection>
 
       {/* 3. BLOCO DE DESEJO */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-white">
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 gradient-lavender">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-8 text-gray-800">
             Imagine se olhar no espelho e se sentir firme, elegante e segura — sem esconder sua parte de cima.
           </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-10">
             <div className="flex items-start">
               <Star className="h-6 w-6 mr-3 text-eleveCoral flex-shrink-0" />
@@ -122,32 +131,33 @@ const Index = () => {
               <p className="text-gray-700">Recupere sua imagem em poucos minutos por dia</p>
             </div>
           </div>
-          
-          <CTAButton onClick={() => scrollToSection("pricing")}>
-            Quero começar agora – R$9,90
+          <CTAButton 
+            size="md"
+            variant="outline"
+            className="bg-eleveNude text-gray-700 border border-gray-300 hover:bg-eleveLavanda"
+            onClick={() => scrollToSection("pricing")}
+          >
+            Quero começar agora
           </CTAButton>
         </div>
       </AnimatedSection>
 
       {/* 4. BLOCO DE OBJEÇÕES */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveLavanda/30">
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-8 text-center text-gray-800">
             Mas será que isso é pra mim?
           </h2>
-          
           <div className="space-y-6">
-            <div className="bg-white rounded-lg p-5 shadow-sm">
+            <div className="bg-eleveNude rounded-lg p-5 shadow-sm">
               <h3 className="font-medium text-lg mb-2">Preciso de academia?</h3>
               <p className="text-gray-700">Nada disso. Você pode fazer tudo em casa, de forma discreta.</p>
             </div>
-            
-            <div className="bg-white rounded-lg p-5 shadow-sm">
+            <div className="bg-eleveNude rounded-lg p-5 shadow-sm">
               <h3 className="font-medium text-lg mb-2">Tenho pouco tempo...</h3>
               <p className="text-gray-700">Criado para mulheres reais: rápido, leve e direto.</p>
             </div>
-            
-            <div className="bg-white rounded-lg p-5 shadow-sm">
+            <div className="bg-eleveNude rounded-lg p-5 shadow-sm">
               <h3 className="font-medium text-lg mb-2">Já tentei outras coisas…</h3>
               <p className="text-gray-700">Este não é um curso. É um ritual diário de 21 dias, com resultados progressivos.</p>
             </div>
@@ -156,12 +166,11 @@ const Index = () => {
       </AnimatedSection>
 
       {/* 5. O MÉTODO E SUA CRIADORA */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-white">
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveLavanda/40">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-8 text-center text-gray-800">
             Um método pensado para valorizar o que você já tem.
           </h2>
-          
           <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
             <div className="w-full md:w-1/3">
               <img 
@@ -179,7 +188,6 @@ const Index = () => {
               </p>
             </div>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div className="space-y-4">
               <h3 className="font-playfair font-bold text-xl mb-4">O que você vai receber:</h3>
@@ -198,9 +206,11 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            
+            {/* Só premium ganha bônus! */}
             <div className="space-y-4">
-              <h3 className="font-playfair font-bold text-xl mb-4">Bônus especiais:</h3>
+              <h3 className="font-playfair font-bold text-xl mb-4">
+                Bônus especiais <span className="text-eleveCoral font-semibold">(exclusivos no plano Premium)</span>:
+              </h3>
               <div className="space-y-3">
                 <div className="flex items-start">
                   <div className="h-6 w-6 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0">🎁</div>
@@ -229,95 +239,120 @@ const Index = () => {
       </AnimatedSection>
 
       {/* 6. PLANOS DE ACESSO */}
-      <AnimatedSection id="pricing" className="py-16 px-5 md:px-10 lg:px-20 gradient-lavender">
+      <AnimatedSection id="pricing" className="py-16 px-5 md:px-10 lg:px-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-12 text-center text-gray-800">
             Comece no seu ritmo:
           </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <GlassCard>
-              <div className="text-center mb-6">
-                <h3 className="font-playfair font-bold text-2xl mb-2">Eleve Essencial™</h3>
-                <div className="text-3xl font-bold text-eleveCoral mb-4">R$9,90</div>
-              </div>
-              
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center">
-                  <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">✓</div>
-                  <p>Método em PDF</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 relative">
+            {/* Card Essencial */}
+            <div className="relative">
+              <GlassCard className="bg-gray-100 border border-gray-300 shadow-sm">
+                <div className="text-center mb-6">
+                  <h3 className="font-playfair font-bold text-2xl mb-2 text-gray-700">Eleve Essencial™</h3>
+                  <div className="text-3xl font-bold text-gray-500 mb-4">R$10</div>
                 </div>
-                <div className="flex items-center">
-                  <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">✓</div>
-                  <p>Cronograma de 21 dias</p>
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-gray-400 text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">✓</div>
+                    <p>Método em PDF</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-gray-400 text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">✓</div>
+                    <p>Cronograma de 21 dias</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-gray-400 text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">✓</div>
+                    <p>Acesso vitalício</p>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">✓</div>
-                  <p>Acesso vitalício</p>
+                <CTAButton
+                  fullWidth
+                  variant="outline"
+                  className="bg-gray-200 text-gray-600 border-gray-400 hover:bg-gray-300 font-medium"
+                >
+                  Quero Começar Agora
+                </CTAButton>
+              </GlassCard>
+            </div>
+            {/* Card Premium */}
+            <div className="relative">
+              <BadgeRibbon>Mais vendido</BadgeRibbon>
+              <GlassCard className="border-2 border-eleveCoral bg-gradient-to-tr from-eleveRosa via-eleveLavanda to-white animate-fade-in shadow-lg">
+                {/* Fita de oferta limitada */}
+                <div className="text-xs mb-2 text-red-600 font-bold uppercase">
+                  Esta promoção só é válida até o dia {dataOferta}
                 </div>
-              </div>
-              
-              <CTAButton fullWidth>
-                Quero Começar Agora
-              </CTAButton>
-            </GlassCard>
-            
-            <GlassCard highlight>
-              <div className="text-center mb-6">
-                <h3 className="font-playfair font-bold text-2xl mb-2">Eleve Premium™</h3>
-                <div className="text-3xl font-bold text-eleveCoral mb-4">R$19,90</div>
-              </div>
-              
-              <div className="space-y-3 mb-8">
+                <div className="text-center mb-6">
+                  <h3 className="font-playfair font-bold text-2xl mb-2 text-eleveCoral">Eleve Premium™</h3>
+                  <div className="text-3xl font-bold text-eleveCoral mb-4">R$19,90</div>
+                </div>
                 <div className="font-medium mb-2">Tudo do Essencial +</div>
-                <div className="flex items-center">
-                  <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
-                  <p>Diário da Autoimagem</p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
+                    <p>Diário da Autoimagem</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
+                    <p>Checklist de Rotina</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
+                    <p>Audioguia da Confiança</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
+                    <p>Mini Guia Estético</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
+                    <p>Acesso ao grupo de suporte no Telegram</p>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
-                  <p>Checklist de Rotina</p>
-                </div>
-                <div className="flex items-center">
-                  <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
-                  <p>Audioguia da Confiança</p>
-                </div>
-                <div className="flex items-center">
-                  <div className="h-5 w-5 rounded-full bg-eleveCoral text-white flex items-center justify-center mr-3 flex-shrink-0 text-xs">🎁</div>
-                  <p>Mini Guia Estético</p>
-                </div>
-              </div>
-              
-              <CTAButton fullWidth>
-                Quero a Experiência Completa
-              </CTAButton>
-            </GlassCard>
+                <CTAButton
+                  fullWidth
+                  size="lg"
+                  className="bg-eleveCoral hover:bg-eleveCoral/90 text-white font-bold shadow-lg text-lg border-none"
+                >
+                  Quero a Experiência Completa
+                </CTAButton>
+              </GlassCard>
+            </div>
           </div>
         </div>
       </AnimatedSection>
 
       {/* 7. PROVAS SOCIAIS */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-white">
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveRosa/30">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-10 text-center text-gray-800">
             Mulheres reais, resultados reais:
           </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <TestimonialCard
               name="Mariana S."
               text="Comecei o método há 3 semanas e já estou usando roupas que ficavam no fundo do armário. A melhor parte é que posso fazer tudo em casa, sem precisar de equipamentos!"
+              className="p-6"
+              rating={5}
+              // Imagem real circular
+              avatarUrl="https://randomuser.me/api/portraits/women/44.jpg"
             />
             <TestimonialCard
               name="Camila R."
               text="O que mais gostei foi a praticidade. São apenas alguns minutos por dia e os resultados aparecem gradualmente. Minha postura melhorou muito também."
+              className="p-6"
+              rating={5}
+              avatarUrl="https://randomuser.me/api/portraits/women/65.jpg"
             />
             <TestimonialCard
               name="Juliana F."
               text="Por anos evitei certos tipos de roupa. Com o método Eleve, recuperei minha confiança e os exercícios são super tranquilos de fazer. Recomendo demais!"
+              className="p-6"
+              rating={5}
+              avatarUrl="https://randomuser.me/api/portraits/women/68.jpg"
             />
           </div>
-          
           <div className="mt-12 text-center">
             <p className="italic text-gray-600 mb-4">"Os resultados variam de pessoa para pessoa. O método busca valorizar sua beleza natural através de exercícios leves e práticas de autocuidado."</p>
           </div>
@@ -325,19 +360,17 @@ const Index = () => {
       </AnimatedSection>
 
       {/* 8. TRANSFORMAÇÃO FINAL */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 gradient-nude">
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveNude">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl mb-8 text-gray-800">
             Não é sobre aparência. É sobre se reencontrar.
           </h2>
-          
           <div className="bg-white p-6 rounded-xl shadow-sm mb-8">
             <p className="text-lg italic text-gray-700 mb-4">
               "Antes, eu evitava fotos e roupas que mostrassem o alto. Hoje, me olho no espelho e sorrio. Não é mágica. É método."
             </p>
             <p className="font-medium">- Paula, 42 anos</p>
           </div>
-          
           <div className="mt-8">
             <img 
               src="https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
@@ -360,11 +393,13 @@ const Index = () => {
               Acreditamos tanto no método que oferecemos garantia total. Se não estiver satisfeita, devolvemos seu investimento integralmente.
             </p>
           </div>
-          
-          <CTAButton size="lg">
-            Quero Começar Agora – por R$9,90 ou R$19,90
+          <CTAButton
+            size="lg"
+            className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-full px-10 py-4 text-lg shadow-lg border-none"
+            onClick={() => scrollToSection("pricing")}
+          >
+            Quero Começar Agora – por R$10 ou R$19,90
           </CTAButton>
-          
           <p className="mt-6 text-gray-700 italic">
             "Você já se deixou por último por tempo demais. Agora é hora de escolher você."
           </p>
@@ -372,12 +407,11 @@ const Index = () => {
       </AnimatedSection>
 
       {/* 10. FAQ */}
-      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveNude">
+      <AnimatedSection className="py-16 px-5 md:px-10 lg:px-20 bg-eleveLavanda/30">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-playfair font-bold text-2xl md:text-3xl mb-8 text-center text-gray-800">
             Perguntas Frequentes
           </h2>
-          
           <FAQAccordion items={faqItems} className="bg-white rounded-xl p-6" />
         </div>
       </AnimatedSection>
@@ -390,20 +424,17 @@ const Index = () => {
               <h3 className="font-playfair font-bold text-lg mb-3">Eleve™</h3>
               <p className="text-sm">Método de autoestima e autocuidado feminino</p>
             </div>
-            
             <div>
               <h4 className="font-medium mb-3">Contato</h4>
               <p className="text-sm mb-1">Suporte: suporte@eleve.com.br</p>
               <p className="text-sm">WhatsApp: (11) 99999-9999</p>
             </div>
           </div>
-          
           <div className="flex flex-col md:flex-row justify-between items-center border-t border-gray-300 pt-6">
             <div className="text-sm mb-4 md:mb-0">
               <a href="#" className="mr-4 hover:text-eleveCoral">Termos de uso</a>
               <a href="#" className="hover:text-eleveCoral">Política de privacidade</a>
             </div>
-            
             <div className="text-sm text-gray-600">
               Copyright © 2025 – Projeto Eleve™
             </div>
